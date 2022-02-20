@@ -1,21 +1,56 @@
 ﻿using static System.Console;
 
-void Printgivenarry(string[] givenarry)
+void Printgivenarry(string[] givenarray)
 {
     Write ("[");
-    for (int i = 0; i < givenarry.Length; i++)
+    for (int i = 0; i < givenarray.Length; i++)
     {
-        Write($"\"{givenarry[i]}\"");
-        if(i!=givenarry.Length - 1)
+        Write($"\"{givenarray[i]}\"");
+        if(i!=givenarray.Length - 1)
         {
             Write(", ");
         }
-        
-
-
+       
     }
     Write("] ");
 } 
 
-string[] givenarry = { "1234", ":))","Russia", "-34", "ferst", "Monday", "2 5","0" };
-Printgivenarry(givenarry);
+int AmountOfElements(string [] givenarray)
+{
+    int StrigOfNumber = 0;
+    for (int i = 0; i < givenarray.Length; i++)
+    {
+        if (givenarray[i].Length <4 )
+        {
+             StrigOfNumber ++;
+        }
+    }
+    return StrigOfNumber;
+}
+string [] SortedCreatedArray (string [] givenarray, int sizNewArray)
+{
+    string [] newStingArray = new string [sizNewArray];
+    int j = 0;
+    for (int i = 0; i < givenarray.Length; i++)
+    {
+        if (givenarray[i].Length <4)
+        {
+            newStingArray[j] = givenarray[i];
+            j++;
+
+        }
+        
+
+    }
+    return newStingArray;
+}
+
+string[] givenarray = { "1234", ":))","Russia", "-34", "ferst", "Monday", "2 5","0" };
+Printgivenarry(givenarray);
+
+int sizNewArray = AmountOfElements(givenarray);
+string [] newStingArray = SortedCreatedArray(givenarray,sizNewArray);
+Write(" => ");
+
+Printgivenarry(newStingArray);
+WriteLine();
